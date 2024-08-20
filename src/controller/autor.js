@@ -1,5 +1,25 @@
+/**
+ * @module AuthorController
+ *
+ * Este módulo contiene los controladores para manejar las operaciones CRUD de autores.
+ * Los métodos incluyen la obtención de todos los autores, la obtención de un autor por su ID,
+ * la creación, actualización, eliminación y alta de autores en la base de datos.
+ *
+ * @requires ../helpers/schemaAuthor
+ * @requires ../model/autor
+ */
 const { validateAuthor, validateIdAuthor } = require("../helpers/schemaAuthor");
 const modelAuthor = require("../model/autor");
+
+/**
+ * Obtiene todos los autores de la base de datos.
+ *
+ * @async
+ * @function getAllAuthors
+ * @param {Object} req - El objeto de solicitud HTTP.
+ * @param {Object} res - El objeto de respuesta HTTP.
+ * @returns {JSON} Lista de autores en formato JSON.
+ */
 const getAllAuthors = async (req, res) => {
   try {
     const [authors] = await modelAuthor.getAllAuthors();
@@ -8,6 +28,16 @@ const getAllAuthors = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+/**
+ * Obtiene un autor por su ID.
+ *
+ * @async
+ * @function getAuthorsById
+ * @param {Object} req - El objeto de solicitud HTTP.
+ * @param {Object} res - El objeto de respuesta HTTP.
+ * @returns {JSON} Información del autor en formato JSON.
+ */
 
 const getAuthorsById = async (req, res) => {
   try {
@@ -24,6 +54,16 @@ const getAuthorsById = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
+
+/**
+ * Crea un nuevo autor en la base de datos.
+ *
+ * @async
+ * @function createAuthor
+ * @param {Object} req - El objeto de solicitud HTTP.
+ * @param {Object} res - El objeto de respuesta HTTP.
+ * @returns {JSON} Información del autor creado en formato JSON.
+ */
 
 const createAuthor = async (req, res) => {
   try {
@@ -42,6 +82,15 @@ const createAuthor = async (req, res) => {
   }
 };
 
+/**
+ * Actualiza un autor existente en la base de datos.
+ *
+ * @async
+ * @function updateAuthor
+ * @param {Object} req - El objeto de solicitud HTTP.
+ * @param {Object} res - El objeto de respuesta HTTP.
+ * @returns {JSON} Información del autor actualizado en formato JSON.
+ */
 const updateAuthor = async (req, res) => {
   try {
     const { idAutor } = req.params;
@@ -62,6 +111,15 @@ const updateAuthor = async (req, res) => {
   }
 };
 
+/**
+ * Elimina un autor de la base de datos.
+ *
+ * @async
+ * @function deleteAuthor
+ * @param {Object} req - El objeto de solicitud HTTP.
+ * @param {Object} res - El objeto de respuesta HTTP.
+ * @returns {JSON} Mensaje de confirmación en formato JSON.
+ */
 const deleteAuthor = async (req, res) => {
   try {
     const idAuthor = Number(req.params.idAutor);
@@ -78,6 +136,15 @@ const deleteAuthor = async (req, res) => {
   }
 };
 
+/**
+ * Da de alta a un autor en la base de datos.
+ *
+ * @async
+ * @function discharge
+ * @param {Object} req - El objeto de solicitud HTTP.
+ * @param {Object} res - El objeto de respuesta HTTP.
+ * @returns {JSON} Información del autor dado de alta en formato JSON.
+ */
 const discharge = async (req, res) => {
   try {
     const idAuthor = Number(req.params.idAutor);

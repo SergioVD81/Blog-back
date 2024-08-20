@@ -12,6 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.12",
     "express": "^4.19.2",
     "log4js": "^6.9.1",
     "mysql2": "^3.11.0",
